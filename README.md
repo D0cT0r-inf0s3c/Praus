@@ -1,7 +1,5 @@
-# plaus
+# praus
 
-plaus Scripts
+praus Scripts
 
 * Tested on Debian 9
-
-# Praus
