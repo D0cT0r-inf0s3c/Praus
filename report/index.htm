@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Reporting Framework</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author v3" content="Hector Portillo">
+    <meta name="Description" content="Discover Script's Report Readout">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css"/>
+
+    <script src="assets/javascript/jquery.min.js"></script>
+    <script src="assets/javascript/bootstrap.min.js"></script>
+</head>
+
+<body class="inc-iframe-parent">
+<!-- Start nav bar-->
+<nav class="navbar inc-app-bar">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#incPrimaryAppBar"
+                    aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://github.com/D0cT0r-inf0s3c/Praus" target="_blank">
+                <span class="inc-banner-logo"></span>
+            </a>
+        </div>
+
+        <!-- Start of the navbar -->
+        <div class="collapse navbar-collapse inc-primary-nav" id="incPrimaryAppBar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="index.htm">Home</a></li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Operating-System <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="pages/systeminfo.htm">SystemInfo</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">AUDIT SCAN<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="pages/Apache2.htm">Apache2</a></li>
+                        <li><a href="pages/Iptable.htm">Iptable</a></li>
+                        <li><a href="pages/Network.htm">Network</a></li>
+                        <li><a href="pages/Nginx.htm">Nginx</a></li>
+                        <li><a href="pages/Services.htm">Services</a></li>
+                        <li><a href="pages/Ssh.htm">Ssh</a></li>
+                        <li><a href="pages/Umask.htm">Umask</a></li>
+                        <li><a href="pages/User-Group.htm">User-Group</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">HARDENING SCAN<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="pages/H-Apache2.htm">Apache2</a></li>
+                      <li><a href="pages/H-Iptable.htm">Iptable</a></li>
+                      <li><a href="pages/H-Network.htm">Network</a></li>
+                      <li><a href="pages/H-Nginx.htm">Nginx</a></li>
+                      <li><a href="pages/H-Services.htm">Services</a></li>
+                      <li><a href="pages/H-Ssh.htm">Ssh</a></li>
+                      <li><a href="pages/H-Umask.htm">Umask</a></li>
+                      <li><a href="pages/H-User-Group.htm">User-Group</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Report<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="pages/xls.htm">Results</a></li>
+                    </ul>
+                </li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<!--  -->
+<div class="inc-home-intro">
+    <h1>PRAUS</h1>
+    <h1>OPERATING SYSTEM AUDIT FRAMEWORK</h1>
+    <img src="assets/images/logo.png">
+    <a href="https://github.com/D0cT0r-inf0s3c/Praus">
+ <img src="assets/images/git.png" style="width:30px;height:30px">Github
+</a>
+    <h2>Praus, an introduction</h2>
+    <p style="text-align:center;"> Auditing, system hardening, compliance testing</p>
+    <p style="text-align:center;">Praus is a battle-tested security tool for systems running Linux, macOS, or Unix-based operating system.
+    It performs an extensive health scan of your systems to support system hardening and compliance testing.
+    The project is open source software.</p>
+    <img src="assets/images/p.png">
+    <h1>Project goals</h1>
+    <p style="text-align:center;">Since praus is flexible, it is used for several different purposes. Typical use cases for praus include:</p>
+      <ul style="list-style-type:circle;text-align:center;">
+        <li>Security auditing</li>
+        <li>Compliance testing</li>
+        <li>Penetration testing</li>
+        <li>Vulnerability detection</li>
+        <li>System hardening</li>
+      </ul>
+    <h1>Audience and use cases</h1>
+      <ul style="list-style-type:circle;text-align:center;">
+        <li>Developers: To test and improve the hardening of your Operating system application.</li>
+        <li>System administrators: Run daily health scans to discover new weaknesses.</li>
+        <li>IT auditors: Show colleagues or clients what can be done to improve security.</li>
+        <li>Penetration testers: Discover security weaknesses on systems of your clients, that may eventually result in system compromise.</li>
+      </ul>
+    <h1>Supported operating systems</h1>
+    <p style="text-align:center;">Praus runs on almost all UNIX-based systems and versions, including:</p>
+      <ul style="list-style-type:circle;text-align:center;">
+        <li>FreeBSD</li>
+        <li>Linux</li>
+        <li>macOS</li>
+        <li>Kali Linux</li>
+        <li>Ubuntu</li>
+        <li>redhat</li>
+        <li>OpenSUSE</li>
+        <ul>
+    <p style="text-align:center;">and others:</p>
+    <h1>How it works</h1>
+
+    <p style="text-align:center;">Praus scanning is opportunistic. That means it will only use what it can find,
+      like available tools or libraries. The benefit is that no installation of other tools is needed,
+      so you can keep your systems clean.By using this scanning method, the tool can run with almost no dependencies.
+      Also, the more it finds, the more extensive the audit will be. In other words:
+      Praus will always perform scans that are customized to your system and no audit will be the same!
+      <p style="text-align:center;">Example: When Lynis detects that you are running Apache,
+        it will perform an initial round of Apache related tests. T
+        hen when it performs the specific Apache tests, it may also discover a SSL/TLS configuration.
+        It then performs additional auditing steps based on that.</p>
+
+      <h1>Audit steps</h1>
+
+<h2>This is what happens during a typical scan with praus:</h2>
+    <ul style="list-style-type:circle;text-align:center;">
+    <li>Initialization and basic checks</li>
+    <li>Scan operating system and tools</li>
+    <li>Perform either an audit or had scan</li>
+    <li>Perform a automated or manual remote scan</li>
+    <li>Report status of security scan</li>
+</ul>
+<p style="text-align:center;">Besides the report and information displayed on screen,
+all technical details about the scan are stored in a log file (praus.log).
+Findings like warnings and suggestions are stored in a separate report file (praus-report.pdf).</p>
+<h3>By James Doctor-infosec Codename:: D0cT0rInf0s3c</h3>
+<br>
+<h2>Contributors</h2>
+<p style="text-align:center;">Praus is an open source Operating system audit and Hardening Framework.
+feel free to contribute</p>
+    <div class="inc-home-intro_customer-logo">
+    </div>
+</div>
+
+</body>
+</html>
