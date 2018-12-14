@@ -137,7 +137,7 @@ else
       status="\e[92m[ GOOD ]"
     fi
     sleep 2
-    echo  "\e[39m[*] Checking if Clickjacking Attack Protection is enabled\t\t\t\t$status"
+    echo  "\e[39m[*] Checking if Clickjacking Attack Protection is enabled\t\t\t\t$status" >> /$home/temp/Apache2.txt
 
     cipher=$(grep -cP '^Header\sset\sX-XSS-Protection\s"1;\smode=block"$' /etc/apache2/conf-available/security.conf)
     if [ $cipher -eq 0 ];
@@ -148,7 +148,7 @@ else
       status="\e[92m[ GOOD ]"
     fi
     sleep 2
-    echo  "\e[39m[*] Checking if XSS Protection is enabled\t\t\t\t\t\t$status"
+    echo  "\e[39m[*] Checking if XSS Protection is enabled\t\t\t\t\t\t$status" >> /$home/temp/Apache2.txt
 
     cipher=$(grep -cP '^Header\salways\sset\sStrict-Transport-Security\s"max-age=31536000;\sincludeSubDomains"$' /etc/apache2/conf-available/security.conf)
     if [ $cipher -eq 0 ];
@@ -159,7 +159,7 @@ else
       status="\e[92m[ GOOD ]"
     fi
     sleep 2
-    echo  "\e[39m[*] Checking if Enforce secure connections is enabled\t\t\t\t\t$status"
+    echo  "\e[39m[*] Checking if Enforce secure connections is enabled\t\t\t\t\t$status" >> /$home/temp/Apache2.txt
 
     cipher=$(grep -cP '^Header\sset\sX-Content-Type-Options:\s"nosniff"$' /etc/apache2/conf-available/security.conf)
     if [ $cipher -eq 0 ];
@@ -170,7 +170,7 @@ else
       status="\e[92m[ GOOD ]"
     fi
     sleep 2
-    echo  "\e[39m[*] Checking if MIME sniffing Protection is enabled\t\t\t\t\t$status"
+    echo  "\e[39m[*] Checking if MIME sniffing Protection is enabled\t\t\t\t\t$status" >> /$home/temp/Apache2.txt
 
     cipher=$(grep -cP "^Header\sset\sContent-Security-Policy\s\"default-src\s'self';\"$" /etc/apache2/conf-available/security.conf)
     if [ $cipher -eq 0 ];
@@ -181,7 +181,7 @@ else
       status="\e[92m[ GOOD ]"
     fi
     sleep 2
-    echo  "\e[39m[*] Checking if Cross-site scripting and injections Protection is enabled\t\t$status"
+    echo  "\e[39m[*] Checking if Cross-site scripting and injections Protection is enabled\t\t$status" >> /$home/temp/Apache2.txt
 fi
 
 if [ ! -f /etc/apache2/mods-available/ssl.conf ];
@@ -198,7 +198,7 @@ else
       status="\e[92m[ GOOD ]"
     fi
     sleep 2
-    echo  "\e[39m[*] Checking if only TLS SSL Protocol is enabled\t\t\t\t\t$status"
+    echo  "\e[39m[*] Checking if only TLS SSL Protocol is enabled\t\t\t\t\t$status" >> /$home/temp/Apache2.txt
 
     cipher=$(grep -cP '^\s+SSLCipherSuite\s+HIGH\:\!MEDIUM\:\!aNULL\:\!MD5\:\!RC4$' /etc/apache2/mods-available/ssl.conf)
     if [ $cipher -eq 0 ];
@@ -209,7 +209,7 @@ else
       status="\e[92m[ GOOD ]"
     fi
     sleep 2
-    echo  "\e[39m[*] Checking if strong SSL Cipher Suites are enabled\t\t\t\t\t$status"
+    echo  "\e[39m[*] Checking if strong SSL Cipher Suites are enabled\t\t\t\t\t$status" >> /$home/temp/Apache2.txt
 fi
 
 indexmod=$(apache2ctl -M 2>/dev/null|grep -c headers)
@@ -221,6 +221,6 @@ else
   status="\e[92m[ GOOD ]"
 fi
 sleep 2
-echo  "\e[39m[*] Checking if headers module is enabled\t\t\t\t\t\t$status"
+echo  "\e[39m[*] Checking if headers module is enabled\t\t\t\t\t\t$status" >> /$home/temp/Apache2.txt
 
 echo  "\033[0m"
