@@ -1,4 +1,10 @@
 #!/bin/bash
+
+##creat Directory
+home=$HOME
+mkdir /$home/temp
+touch /$home/temp/Apache2.txt
+
 echo "\e[1;95m-------------------------[apache2 audit in progress]-------------------------"
 
 installed=$(dpkg-query -W -f='${Status}' apache2 2>/dev/null | grep -c "ok installed")
@@ -10,7 +16,7 @@ else
   status="\e[92m[ GOOD ]"
 fi
 sleep 2
-echo "\e[39m[*] Checking apache2 installation\t\t\t\t\t\t\t$status"
+echo "\e[39m[*] Checking apache2 installation\t\t\t\t\t\t\t$status" > /$home/temp/Apache2.txt
 
 if [ ! -f /etc/apache2/apache2.conf ];
 then
@@ -26,7 +32,7 @@ else
       status="\e[92m[ GOOD ]"
     fi
     sleep 2
-    echo "\e[39m[*] Checking if apache2 version is hidden\t\t\t\t\t\t$status"
+    echo "\e[39m[*] Checking if apache2 version is hidden\t\t\t\t\t\t$status" >> /$home/temp/Apache2.txt
 
     token=$(grep -cP '^ServerTokens\s+Prod$' /etc/apache2/apache2.conf)
     if [ $token -eq 0 ];
@@ -37,7 +43,7 @@ else
       status="\e[92m[ GOOD ]"
     fi
     sleep 2
-    echo "\e[39m[*] Checking if ServerTokens has been set\t\t\t\t\t\t$status"
+    echo "\e[39m[*] Checking if ServerTokens has been set\t\t\t\t\t\t$status" >> /$home/temp/Apache2.txt
 
     token=$(grep -cP '^FileETag\sNone$' /etc/apache2/apache2.conf)
     if [ $token -eq 0 ];
@@ -48,7 +54,7 @@ else
       status="\e[92m[ GOOD ]"
     fi
     sleep 2
-    echo  "\e[39m[*] Checking if ETags is disabled\t\t\t\t\t\t\t$status"
+    echo  "\e[39m[*] Checking if ETags is disabled\t\t\t\t\t\t\t$status" >> /$home/temp/Apache2.txt
 
     cipher=$(grep -cP "^Timeout 60$" /etc/apache2/apache2.conf)
     if [ $cipher -eq 0 ];
@@ -59,7 +65,7 @@ else
       status="\e[92m[ GOOD ]"
     fi
     sleep 2
-    echo  "\e[39m[*] Checking if DoS attacks Protection is enabled\t\t\t\t\t$status"
+    echo  "\e[39m[*] Checking if DoS attacks Protection is enabled\t\t\t\t\t$status" >> /$home/temp/Apache2.txt
 fi
 
 indexmod=$(apache2ctl -M 2>/dev/null|grep -c autoindex)
@@ -71,7 +77,7 @@ else
   status="\e[92m[ GOOD ]"
 fi
 sleep 2
-echo  "\e[39m[*] Checking if autoindex module is disabled\t\t\t\t\t\t$status"
+echo  "\e[39m[*] Checking if autoindex module is disabled\t\t\t\t\t\t$status" >> /$home/temp/Apache2.txt
 
 indexmod=$(cat /var/www/html/index.html|wc -w)
 if [ $indexmod -ne 0 ];
@@ -82,7 +88,7 @@ else
   status="\e[92m[ GOOD ]"
 fi
 sleep 2
-echo  "\e[39m[*] Checking if index.html is empty\t\t\t\t\t\t\t$status"
+echo  "\e[39m[*] Checking if index.html is empty\t\t\t\t\t\t\t$status" >> /$home/temp/Apache2.txt
 
 if [ ! -f /etc/apache2/apache2.conf ];
 then
@@ -98,7 +104,7 @@ else
       status="\e[92m[ GOOD ]"
     fi
     sleep 2
-    echo  "\e[39m[*] Checking if root directory is secured\t\t\t\t\t\t$status"
+    echo  "\e[39m[*] Checking if root directory is secured\t\t\t\t\t\t$status" >> /$home/temp/Apache2.txt
 
     rdir=$(grep -cPzo '<Directory\s+/var/www/html>\nOptions\s+-Indexes\s+-Includes\nAllowOverride\s+None\nOrder\s+Allow,Deny\nAllow\s+from\s+All\n</Directory>\n' /etc/apache2/conf-available/security.conf)
     if [ $rdir -eq 0 ];
@@ -109,7 +115,7 @@ else
       status="\e[92m[ GOOD ]"
     fi
     sleep 2
-    echo "\e[39m[*] Checking if html directory is secured\t\t\t\t\t\t$status"
+    echo "\e[39m[*] Checking if html directory is secured\t\t\t\t\t\t$status" >> /$home/temp/Apache2.txt
 
     cipher=$(grep -cP '^Header\sedit\sSet-Cookie\s\^\(\.\*\)\$\s\$1;HttpOnly;Secure$' /etc/apache2/conf-available/security.conf)
     if [ $cipher -eq 0 ];
@@ -120,7 +126,7 @@ else
       status="\e[92m[ GOOD ]"
     fi
     sleep 2
-    echo "\e[39m[*] Checking if HttpOnly and Secure flags are enabled\t\t\t\t\t$status"
+    echo "\e[39m[*] Checking if HttpOnly and Secure flags are enabled\t\t\t\t\t$status" >> /$home/temp/Apache2.txt
 
     cipher=$(grep -cP '^Header\salways\sappend\sX-Frame-Options\sSAMEORIGIN$' /etc/apache2/conf-available/security.conf)
     if [ $cipher -eq 0 ];
