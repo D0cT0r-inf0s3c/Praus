@@ -1,5 +1,9 @@
 #!/bin/bash
 
+home=$HOME
+mkdir /$home/temp
+touch /$home/temp/iptables.txt
+
 echo
 echo  "\e[1;95m-------------------------[iptables audit in progress]-------------------------"
 
