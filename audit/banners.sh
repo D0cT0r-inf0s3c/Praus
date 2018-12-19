@@ -1,4 +1,9 @@
 #!/bin/bash
+
+home=$HOME
+mkdir /$home/temp
+touch /$home/temp/banners.sh.txt
+
 echo  "\e[1;95m-------------------------[banners audit in progress]-------------------------"
 
 fileowner=$(ls -l /etc/motd| awk '{ print $3 }'|grep -c root)
