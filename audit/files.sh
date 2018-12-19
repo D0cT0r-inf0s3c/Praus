@@ -1,4 +1,9 @@
 #!/bin/bash
+
+home=$HOME
+mkdir /$home/temp
+touch /$home/temp/files.txt
+
 echo  "\e[1;95m-------------------------[system files audit in progress]-------------------------"
 
 fileowner=$(ls -l /etc/passwd| awk '{ print $3 }'|grep -c root)
