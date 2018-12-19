@@ -1,4 +1,9 @@
 #!/bin/bash
+
+home=$HOME
+mkdir /$home/temp
+touch /$home/temp/networks.txt
+
 echo  "\e[1;95m-------------------------[network audit in progress]-------------------------"
 
 signature=$(grep -cP '^net\.ipv4\.ip_forward=0$' /etc/sysctl.conf)
