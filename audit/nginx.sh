@@ -1,4 +1,9 @@
 #!/bin/bash
+
+home=$HOME
+mkdir /$home/temp
+touch /$home/temp/nginx.txt
+
 echo "\e[1;95m-------------------------[nginx audit in progress]-------------------------"
 
 installed=$(dpkg-query -W -f='${Status}' nginx 2>/dev/null | grep -c "ok installed")
