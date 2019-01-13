@@ -1,5 +1,9 @@
 #!/bin/bash
 
+home=$HOME
+mkdir /$home/temp
+touch /$home/temp/umasks.txt
+
 echo
 echo -e "\e[1;95m-------------------------[umask audit in progress]-------------------------"
 
