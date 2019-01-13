@@ -16,7 +16,7 @@ else
   status="\e[92m[ GOOD ]"
 fi
 sleep 2
-echo -e "\e[39m[*] Checking Maximum number of days of password usage\t\t\t\t\t$status"
+echo -e "\e[39m[*] Checking Maximum number of days of password usage\t\t\t\t\t$status" > /$home/temp/users-groups.txt
 
 signature=$(grep -cP '^PASS_MIN_DAYS\s+5$' /etc/login.defs)
 if [ $signature -eq 0 ];
@@ -27,7 +27,7 @@ else
   status="\e[92m[ GOOD ]"
 fi
 sleep 2
-echo -e "\e[39m[*] Checking Minimum number of days between password changes\t\t\t\t$status"
+echo -e "\e[39m[*] Checking Minimum number of days between password changes\t\t\t\t$status" >> > /$home/temp/users-groups.txt
 
 signature=$(grep -cP '^PASS_WARN_AGE\s+10$' /etc/login.defs)
 if [ $signature -eq 0 ];
@@ -38,7 +38,7 @@ else
   status="\e[92m[ GOOD ]"
 fi
 sleep 2
-echo -e "\e[39m[*] Checking Number of days warning before password expiration\t\t\t\t$status"
+echo -e "\e[39m[*] Checking Number of days warning before password expiration\t\t\t\t$status" >> > /$home/temp/users-groups.txt
 
 signature=$(useradd -D | grep -cP '^INACTIVE=30$')
 if [ $signature -eq 0 ];
@@ -49,7 +49,7 @@ else
   status="\e[92m[ GOOD ]"
 fi
 sleep 2
-echo -e "\e[39m[*] Checking users locking after inactivity\t\t\t\t\t\t$status"
+echo -e "\e[39m[*] Checking users locking after inactivity\t\t\t\t\t\t$status" >> /$home/temp/users-groups.txt
 
 signature=$(id -gn root| grep -cP '^root$')
 if [ $signature -eq 0 ];
@@ -60,7 +60,7 @@ else
   status="\e[92m[ GOOD ]"
 fi
 sleep 2
-echo -e "\e[39m[*] Checking root primary group\t\t\t\t\t\t\t\t$status"
+echo -e "\e[39m[*] Checking root primary group\t\t\t\t\t\t\t\t$status" >> > /$home/temp/users-groups.txt
 
 installed=$(dpkg-query -W -f='${Status}' libpam-cracklib 2>/dev/null | grep -c "ok installed")
 if [ $installed -eq 0 ];
@@ -71,7 +71,7 @@ else
   status="\e[92m[ GOOD ]"
 fi
 sleep 2
-echo -e "\e[39m[*] Checking libpam-cracklib installation\t\t\t\t\t\t$status"
+echo -e "\e[39m[*] Checking libpam-cracklib installation\t\t\t\t\t\t$status" >> /$home/temp/users-groups.txt
 
 signature=$(grep -cP '.*minlen=14.*' /etc/pam.d/common-password)
 if [ $signature -eq 0 ];
@@ -82,7 +82,7 @@ else
   status="\e[92m[ GOOD ]"
 fi
 sleep 2
-echo -e "\e[39m[*] Checking minimum password length\t\t\t\t\t\t\t$status"
+echo -e "\e[39m[*] Checking minimum password length\t\t\t\t\t\t\t$status" >> /$home/temp/users-groups.txt
 
 signature=$(grep -cP '.*reject_username.*' /etc/pam.d/common-password)
 if [ $signature -eq 0 ];
@@ -93,7 +93,7 @@ else
   status="\e[92m[ GOOD ]"
 fi
 sleep 2
-echo -e "\e[39m[*] Checking if username in password is allowed\t\t\t\t\t\t$status"
+echo -e "\e[39m[*] Checking if username in password is allowed\t\t\t\t\t\t$status" >> /$home/temp/users-groups.txt
 
 signature=$(grep -cP '.*minclass=4.*' /etc/pam.d/common-password)
 if [ $signature -eq 0 ];
@@ -113,7 +113,7 @@ else
   status="\e[92m[ GOOD ]"
 fi
 sleep 2
-echo -e "\e[39m[*] Checking if Password complexity class\t\t\t\t\t\t$status"
+echo -e "\e[39m[*] Checking if Password complexity class\t\t\t\t\t\t$status" >> /$home/temp/users-groups.txt
 
 signature=$(grep -cP '.*maxrepeat=2.*' /etc/pam.d/common-password)
 if [ $signature -eq 0 ];
@@ -124,7 +124,7 @@ else
   status="\e[92m[ GOOD ]"
 fi
 sleep 2
-echo -e "\e[39m[*] Checking if passwords with 2 same consecutive characters are rejected\t\t$status"
+echo -e "\e[39m[*] Checking if passwords with 2 same consecutive characters are rejected\t\t$status" >> /$home/temp/users-groups.txt
 
 signature=$(grep -cP '.*remember=24.*' /etc/pam.d/common-password)
 if [ $signature -eq 0 ];
@@ -135,7 +135,7 @@ else
   status="\e[92m[ GOOD ]"
 fi
 sleep 2
-echo -e "\e[39m[*] Checking last 24 passwords is enabled\t\t\t\t\t\t$status"
+echo -e "\e[39m[*] Checking last 24 passwords is enabled\t\t\t\t\t\t$status" >> /$home/temp/users-groups.txt
 
 signature=$(grep -cP '.*auth required pam_tally2\.so onerr=fail audit silent deny=5 unlock_time=1200.*' /etc/pam.d/login)
 if [ $signature -eq 0 ];
@@ -146,7 +146,7 @@ else
   status="\e[92m[ GOOD ]"
 fi
 sleep 2
-echo -e "\e[39m[*] Checking if accounts locked out after unsuccessful login attempts\t\t\t$status"
+echo -e "\e[39m[*] Checking if accounts locked out after unsuccessful login attempts\t\t\t$status" >> /$home/temp/users-groups.txt
 
 signature=$(grep -cP '^-:wheel:ALL EXCEPT LOCAL.*' /etc/security/access.conf)
 if [ $signature -eq 0 ];
@@ -157,7 +157,7 @@ else
   status="\e[92m[ GOOD ]"
 fi
 sleep 2
-echo -e "\e[39m[*] Checking if non-local logins to privileged accounts are not allowed\t\t\t$status"
+echo -e "\e[39m[*] Checking if non-local logins to privileged accounts are not allowed\t\t\t$status" >> /$home/temp/users-groups.txt
 
 signature=$(grep -cP '.*delay=10000000.*' /etc/pam.d/login)
 if [ $signature -eq 0 ];
@@ -168,6 +168,6 @@ else
   status="\e[92m[ GOOD ]"
 fi
 sleep 2
-echo -e "\e[39m[*] Checking delay time between login prompts\t\t\t\t\t\t$status"
+echo -e "\e[39m[*] Checking delay time between login prompts\t\t\t\t\t\t$status" >> /$home/temp/users-groups.txt
 
 echo -e "\033[0m"
