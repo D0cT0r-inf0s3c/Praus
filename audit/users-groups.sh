@@ -1,5 +1,8 @@
 #!/bin/bash
 
+home=$HOME
+mkdir /$home/temp
+touch /$home/temp/users-groups.txt
 
 echo
 echo -e "\e[1;95m-------------------------[users and groups audit in progress]-------------------------"
